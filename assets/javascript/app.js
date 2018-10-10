@@ -33,23 +33,22 @@ function getCarGiphies() {
 
       // Only taking action if the photo has an appropriate rating
       if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-        // Creating a div for the gif
+        // Creating a button for the gif
         var gifBtn = $("<button>");
         gifBtn.attr("id", "btn");
         // Storing the result item's rating
         var rating = results[i].rating;
-
+        var capRating = rating.toUpperCase();
         // Creating a paragraph tag with the result item's rating
         // Under every gif, display its rating (PG, G, so on).
-        var p = $("<p>").text("Rating: " + rating);
+        var p = $("<p>").text("Rating: " + capRating);
 
         // Creating an image tag
         var carImage = $("<img>");
         carImage.addClass("gif");
-        // Image attributes
-        // carImage.attr("id","car-giphys");
-        //still
-        carImage.attr("data-state", "still"); //initial state
+
+        //initial state //still
+        carImage.attr("data-state", "still");
         carImage.attr("src", results[i].images.fixed_height_still.url);
         carImage.attr("data-still", results[i].images.fixed_height_still.url);
         //anitmated
@@ -66,6 +65,20 @@ function getCarGiphies() {
   });
 }
 
+function changeGifState() {
+  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+  var state = $(this).attr("data-state");
+  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+  // Then, set the image's data-state to animate
+  // Else set src to the data-still value
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+}
 // Function for creating car buttons
 function createBtns() {
   // Delete car buttons
@@ -88,6 +101,7 @@ function createBtns() {
 
 function clear() {
   $("#car-btns-view").empty();
+  $("#instruction").show();
 }
 
 // get user input of car push to array then send to createBtns
@@ -101,36 +115,20 @@ $("#add-car").on("click", function(event) {
   cars.push(car);
   createBtns();
   $("#user-input").val(" ");
+  $("#instruction").hide();
 });
+
+// When clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
+// Click button
+$(document).on("click", ".cars", getCarGiphies);
+
+// When the user clicks one of the still GIPHY images, the gif should animate.
+// If the user clicks the gif again, it should stop playing./
+// CURRENTLY this is NOT WORKING
+$(document).on("click", ".gif", changeGifState);
 
 // .on("click") function  with the clear car buttons from DOM
 $("#clear-cars").on("click", clear);
 
 // Call createBtns function to display initial list of cars
 createBtns();
-$("#instruction").hide();
-
-// When clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
-// Click button
-$(document).on("click", ".cars", getCarGiphies);
-
-// When the user clicks one of the still GIPHY images, the gif should animate. 
-// If the user clicks the gif again, it should stop playing./
-// CURRENTLY this is NOT WORKING
-$("#btn").on("click", function() {
-  event.preventDefault();
-  var state = $(this)
-    .attr("data-state")
-    .val();
-  console.log(state);
-  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-  // Then, set the image's data-state to animate
-  // Else set src to the data-still value
-  if (state === "still") {
-    $(this).attr("src", $(this).attr("data-animate"));
-    $(this).attr("data-state", "animate");
-  } else {
-    $(this).attr("src", $(this).attr("data-still"));
-    $(this).attr("data-state", "still");
-  }
-});

@@ -8,28 +8,31 @@
     <title>GiphyIt</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<style>
+.jumbotron{background-color: coral;}
+h1{font-weight: 900;}
+</style>
 
 
 </head>
 
 <body>
     <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-4">Its Giphy Cars!!</h1>
-              <p id="instruction">Enter your favorite car name. A button will created.
-                  Then select the button for the car gif you want to see.
-                Select the car gif to make the gif GO!!!! </p>
-            </div>
-          </div>
+        <div class="container">
+            <h1 class="display-4">Its Giphy Cars!!</h1>
+            <p id="instruction">Enter your favorite car name.
+                A car button will be created.
+                Select car button and 10 car gifs buttons will appear.
+                If you select a car gif.....
+                then watch the car gif GGGGGGGGOOOOOOOO!!!! </p>
+        </div>
+    </div>
     <div class="container">
 
-        
         <div id="car-view"></div>
         <br>
 
@@ -45,10 +48,10 @@
             <button class="btn btn-default" id="clear-cars">
                 <i class="fa fa-trash"></i> Clear Cars</button>
         </form>
-       
+
         <div id="car-btns-view"></div>
         <br>
-       
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
