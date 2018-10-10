@@ -11,7 +11,7 @@ function getCarGiphies() {
 
   console.log(carName);
   // // Make call to giphy
-  var queryURL =
+  var queryURL git=
     "http://api.giphy.com/v1/gifs/search?q=" +
     carName +
     "&api_key=" +
