@@ -1,5 +1,7 @@
 # GiphyIt
-
+https://acsmoot.github.io/GiphyIt/
+ https://github.com/acsmoot/GiphyIt
+ 
 Theme - Its Cars
 Enter your favorite car name i.e., bmw, kia, etc.)
 A car button will be created.
